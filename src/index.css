@@ -36,6 +36,27 @@
   align-items: center;
 }
 
+.explosion-heart {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  animation: heart-explode 0.8s forwards cubic-bezier(0.1, 0.8, 0.3, 1);
+  transform: translate(-50%, -50%);
+}
+
+@keyframes heart-explode {
+  0% {
+    transform: translate(-50%, -50%) translate(0, 0) scale(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) translate(calc(cos(var(--angle)) * var(--velocity) * 50px),
+        calc(sin(var(--angle)) * var(--velocity) * 50px)) scale(0);
+    opacity: 0;
+  }
+}
+
 body {
   background-color: transparent;
   height: 100vh;
